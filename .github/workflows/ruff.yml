@@ -49,3 +49,9 @@ jobs:
       - name: Lint code with Ruff
         run: |
           uv run ruff check .
+
+      - name: Type check with ty (non-blocking)
+        run: uv run ty check hugegraph-llm/src hugegraph-python-client/src
+        continue-on-error: true
+        # TODO: extend scope to hugegraph-ml once heavy optional deps (DGL, PyTorch) are handled
+        # TODO: add graph-mcp once the module is introduced
